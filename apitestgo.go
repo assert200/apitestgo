@@ -1,13 +1,13 @@
 package main
 
 import (
-	"github.com/assert200/restgo"
+	"github.com/assert200/gorest"
 	"log"
 	"net/url"
 )
 
 func main() {
-	restRequest := restgo.Request{}
+	restRequest := gorest.Request{}
 
 	var url url.URL
 	url.Scheme = "https"
@@ -17,7 +17,7 @@ func main() {
 	restRequest.Method = "GET"
 	restRequest.URL = url
 
-	restResponse, err := restgo.Do(&restgo.Session{}, restRequest)
+	restResponse, err := gorest.Do(&restgo.Session{}, restRequest)
 
 	if err != nil {
 		log.Fatal("There was an error excuting the rest request: " + err.Error())
