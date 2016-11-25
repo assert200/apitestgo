@@ -17,7 +17,7 @@ func main() {
 	restRequest.Method = "GET"
 	restRequest.URL = url
 
-	restResponse, err := gorest.Do(&restgo.Session{}, restRequest)
+	restResponse, err := gorest.Do(&gorest.Session{}, restRequest)
 
 	if err != nil {
 		log.Fatal("There was an error excuting the rest request: " + err.Error())
