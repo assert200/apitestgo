@@ -8,27 +8,27 @@ import (
 )
 
 func main() {
-	restRequest := gorest.Request{}
+	request := gorest.NewRequest()
 
 	var url url.URL
 	url.Scheme = "https"
 	url.Host = "www.google.com"
 	url.Path = "/"
 
-	restRequest.Method = "GET"
-	restRequest.URL = url
+	request.Method = "GET"
+	request.URL = url
 
-	session := gorest.CreateNewSession()
+	session := gorest.NewSession()
 
-	restResponse, err := gorest.Do(session, restRequest)
+	response, err := gorest.Do(session, request)
 
 	if err != nil {
 		log.Fatal("There was an error excuting the rest request: " + err.Error())
 	}
 
-	if restResponse.StatusCode != 200 {
-		log.Fatal("Expecting Status Code 200, Recieved: ", restResponse.StatusCode)
+	if response.StatusCode != 200 {
+		log.Fatal("Expecting Status Code 200, Recieved: ", response.StatusCode)
 	}
 
-	log.Println("PASS: Response Status Code: ", restResponse.StatusCode)
+	log.Println("PASS: Response Status Code: ", response.StatusCode)
 }
